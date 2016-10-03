@@ -304,6 +304,6 @@ class Jasper(object):
                 verbose=(self._logger.getEffectiveLevel() == logging.DEBUG))
 
     def run(self):
-        #self.conversation.askName()
+        self.conversation.askName()
         self.conversation.greet()
         self.conversation.handleForever()
