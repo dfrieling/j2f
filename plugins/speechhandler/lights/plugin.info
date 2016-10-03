@@ -1,0 +1,10 @@
+[Plugin]
+Name = lights
+Version = 0.0.2
+License = MIT
+URL = http://jasperproject.github.io/
+Description = Switches on the lights
+
+[Author]
+Name = Daniel Frieling
+URL = http://jasperproject.github.io/

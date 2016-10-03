@@ -1,0 +1,74 @@
+# German translations for jasper package.
+# Copyright (C) 2016 THE jasper'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the jasper package.
+# root <root@1920a63dff61>, 2016.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: jasper 2fork\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-09-27 20:59+0000\n"
+"PO-Revision-Date: 2016-09-27 20:59+0000\n"
+"Last-Translator: root <root@1920a63dff61>\n"
+"Language-Team: German\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ASCII\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: infrared.py:30
+msgid "SCREEN"
+msgstr "LEINWAND"
+
+#: infrared.py:30
+msgid "PROJECTOR"
+msgstr "BEAMER"
+
+#: infrared.py:30 infrared.py:34 infrared.py:55
+msgid "LOUDER"
+msgstr "LAUTER"
+
+#: infrared.py:31 infrared.py:35 infrared.py:58
+msgid "SOFTER"
+msgstr "LEISER"
+
+#: infrared.py:31
+msgid "HIFI"
+msgstr "ANLAGE"
+
+#: infrared.py:34 infrared.py:46
+msgid "UP"
+msgstr "HOCH"
+
+#: infrared.py:34 infrared.py:49
+msgid "STOP"
+msgstr "STOP"
+
+#: infrared.py:34 infrared.py:52
+msgid "DOWN"
+msgstr "RUNTER"
+
+#: infrared.py:35
+msgid "ON"
+msgstr "AN"
+
+#: infrared.py:35
+msgid "OFF"
+msgstr "AUS"
+
+#: infrared.py:61
+msgid "HIFI ON"
+msgstr "ANLAGE AN"
+
+#: infrared.py:61
+msgid "HIFI OFF"
+msgstr "ANLAGE AUS"
+
+#: infrared.py:64
+msgid "PROJECTOR ON"
+msgstr "BEAMER AN"
+
+#: infrared.py:67
+msgid "PROJECTOR OFF"
+msgstr "BEAMER AUS"

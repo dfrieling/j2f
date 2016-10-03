@@ -1,0 +1,10 @@
+[Plugin]
+Name = spotify
+Version = 0.0.1
+License = CC
+URL =
+Description = Control your spotify service
+
+[Author]
+Name = Daniel Frieling
+URL =

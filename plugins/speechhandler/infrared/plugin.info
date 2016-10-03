@@ -1,0 +1,10 @@
+[Plugin]
+Name = infrared
+Version = 0.0.1
+License = CC
+URL =
+Description = Control your IR devices
+
+[Author]
+Name = Daniel Frieling
+URL =

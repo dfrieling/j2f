@@ -1,0 +1,62 @@
+# German translations for jasper package.
+# Copyright (C) 2016 THE jasper'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the jasper package.
+# root <root@1920a63dff61>, 2016.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: jasper 2fork\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-09-08 21:56+0000\n"
+"PO-Revision-Date: 2016-09-08 21:57+0000\n"
+"Last-Translator: root <root@1920a63dff61>\n"
+"Language-Team: German\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ASCII\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: audiocontrol.py:19
+msgid "AUDIO"
+msgstr "AUDIO"
+
+#: audiocontrol.py:19
+msgid "SOUND"
+msgstr "SOUND"
+
+#: audiocontrol.py:19
+msgid "MUSIC"
+msgstr "MUSIK"
+
+#: audiocontrol.py:35 audiocontrol.py:78
+msgid "LOUDER"
+msgstr "LAUTER"
+
+#: audiocontrol.py:35 audiocontrol.py:81
+msgid "SOFTER"
+msgstr "LEISER"
+
+#: audiocontrol.py:36 audiocontrol.py:72
+msgid "MUTE"
+msgstr "STUMM"
+
+#: audiocontrol.py:36 audiocontrol.py:75
+msgid "UNMUTE"
+msgstr "TON"
+
+#: audiocontrol.py:36 audiocontrol.py:84
+msgid "EXIT"
+msgstr "RAUS"
+
+#: audiocontrol.py:58
+msgid "Pardon?"
+msgstr "Wie bitte?"
+
+#: audiocontrol.py:66
+msgid "Music Mode stopped!"
+msgstr "Musik-Modus beendet"
+
+#: audiocontrol.py:84
+msgid "CLOSE"
+msgstr "SCHLUSS"

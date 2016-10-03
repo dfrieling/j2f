@@ -170,16 +170,23 @@ class Jasper(object):
         try:
             device_slug = self.config['audio']['output_device']
         except KeyError:
-            device_slug = self.audio.get_default_device(output=True).slug
-            self._logger.warning("output_device not specified in profile, " +
+            try:
+                device_slug = self.audio.get_default_device(output=True).slug
+                self._logger.warning("output_device not specified in profile, " +
                                  "defaulting to '%s' (Possible values: %s)",
                                  device_slug, ', '.join(devices))
+            except:
+                self._logger.warning("cannot get hold of output device, disabling output..")
+                device_slug = 'none'
         try:
-            output_device = self.audio.get_device_by_slug(device_slug)
-            if audioengine.DEVICE_TYPE_OUTPUT not in output_device.types:
-                raise audioengine.UnsupportedFormat(
-                    "Audio device with slug '%s' is not an output device"
-                    % output_device.slug)
+            if(device_slug == 'none'):
+                output_device = False
+            else:
+                output_device = self.audio.get_device_by_slug(device_slug)
+                if audioengine.DEVICE_TYPE_OUTPUT not in output_device.types:
+                    raise audioengine.UnsupportedFormat(
+                        "Audio device with slug '%s' is not an output device"
+                        % output_device.slug)
         except (audioengine.DeviceException) as e:
             self._logger.critical(e.args[0])
             self._logger.warning('Valid output devices: %s',
@@ -297,6 +304,6 @@ class Jasper(object):
                 verbose=(self._logger.getEffectiveLevel() == logging.DEBUG))
 
     def run(self):
-        self.conversation.askName()
+        #self.conversation.askName()
         self.conversation.greet()
         self.conversation.handleForever()

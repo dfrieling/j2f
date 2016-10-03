@@ -2,4 +2,8 @@
 # -*- coding: utf-8 -*-
 import jasper
 
+import sys
+reload(sys)
+sys.setdefaultencoding('utf-8')
+
 jasper.main()

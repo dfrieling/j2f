@@ -25,6 +25,8 @@ class SnowboySTTPlugin(plugin.STTPlugin):
         except KeyError:
             self.sensitivity = "0.5"
 
+        print "running snowboy with sensitivity %s and model %s" % (self.sensitivity,self.model)
+
         self.detector = snowboydetect.SnowboyDetect(
             resource_filename=self.resource_file,
             model_str=self.model)
@@ -35,6 +37,7 @@ class SnowboySTTPlugin(plugin.STTPlugin):
         fp.seek(44)
         data = fp.read()
 
+        print 'running snowboy detection...'
         ans = self.detector.RunDetection(data)
 
         if ans:

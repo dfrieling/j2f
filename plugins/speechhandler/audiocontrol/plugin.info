@@ -1,0 +1,10 @@
+[Plugin]
+Name = audiocontrol
+Version = 0.0.1
+License = CC
+URL =
+Description = Control your audio
+
+[Author]
+Name = Daniel Frieling
+URL =

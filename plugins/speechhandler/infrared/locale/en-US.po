@@ -1,0 +1,66 @@
+# English translations for jasper package.
+# Copyright (C) 2016 THE jasper'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the jasper package.
+# root <root@1920a63dff61>, 2016.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: jasper 2fork\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-09-24 19:39+0000\n"
+"PO-Revision-Date: 2016-09-24 19:39+0000\n"
+"Last-Translator: root <root@1920a63dff61>\n"
+"Language-Team: English\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ASCII\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: infrared.py:27
+msgid "SCREEN"
+msgstr "SCREEN"
+
+#: infrared.py:27
+msgid "PROJECTOR"
+msgstr "PROJECTOR"
+
+#: infrared.py:27 infrared.py:48
+msgid "LOUDER"
+msgstr "LOUDER"
+
+#: infrared.py:28 infrared.py:51
+msgid "SOFTER"
+msgstr "SOFTER"
+
+#: infrared.py:28
+msgid "HIFI"
+msgstr "HIFI"
+
+#: infrared.py:39
+msgid "UP"
+msgstr "UP"
+
+#: infrared.py:42
+msgid "STOP"
+msgstr "STOP"
+
+#: infrared.py:45
+msgid "DOWN"
+msgstr "DOWN"
+
+#: infrared.py:54
+msgid "HIFI ON"
+msgstr "HIFI ON"
+
+#: infrared.py:54
+msgid "HIFI OFF"
+msgstr "HIFI OFF"
+
+#: infrared.py:57
+msgid "PROJECTOR ON"
+msgstr "PROJECTOR ON"
+
+#: infrared.py:60
+msgid "PROJECTOR OFF"
+msgstr "PROJECTOR OFF"

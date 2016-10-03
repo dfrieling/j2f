@@ -8,6 +8,8 @@ import contextlib
 import threading
 import math
 import sys
+import pygame
+import time
 if sys.version_info < (3, 0):  # NOQA
     import Queue as queue
 else:  # NOQA
@@ -101,14 +103,18 @@ class Mic(object):
 
     @contextlib.contextmanager
     def _write_frames_to_file(self, frames, framerate, volume):
-        with tempfile.NamedTemporaryFile(mode='w+b') as f:
+        with tempfile.NamedTemporaryFile(mode='w+b',delete=False) as f:
             wav_fp = wave.open(f, 'wb')
             wav_fp.setnchannels(self._input_channels)
             wav_fp.setsampwidth(int(self._input_bits / 8))
             wav_fp.setframerate(framerate)
+  
+            print "writing frames to file %s, vol=%s" % (f.name, volume)
             if self._input_rate == framerate:
+                print "input rate == output rate (%s), just joining..." % framerate
                 fragment = ''.join(frames)
             else:
+                print 'irate != orate, i=%s o=%s, converting...' % (self._input_rate, framerate)
                 fragment = audioop.ratecv(''.join(frames),
                                           int(self._input_bits / 8),
                                           self._input_channels,
@@ -116,13 +122,15 @@ class Mic(object):
                                           framerate, None)[0]
             if volume is not None:
                 maxvolume = audioop.minmax(fragment, self._input_bits / 8)[1]
-                fragment = audioop.mul(
-                    fragment, int(self._input_bits / 8),
-                    volume * (2. ** 15) / maxvolume)
+                factor = volume * (2. ** 15) / maxvolume
+                fragment = audioop.mul(fragment, int(self._input_bits / 8), factor)
+                self._logger.info('applying vol normalization, maxvol=%s, multiplying by: %s' % (maxvolume, factor))
 
             wav_fp.writeframes(fragment)
+
             wav_fp.close()
             f.seek(0)
+
             yield f
 
     def check_for_keyword(self, frame_queue, keyword_uttered, keyword):
@@ -162,6 +170,8 @@ class Mic(object):
         recording = False
         recording_frames = []
         self._logger.info("Waiting for keyword '%s'...", keyword)
+        self._logger.info("input settings: chunksize: %s, bits: %s, channels: %s, rate: %s" % (self._input_chunksize, self._input_bits, self._input_channels, self._input_rate))
+
         for frame in self._input_device.record(self._input_chunksize,
                                                self._input_bits,
                                                self._input_channels,
@@ -173,6 +183,7 @@ class Mic(object):
             if not recording:
                 snr = self._snr([frame])
                 if snr >= 10:  # 10dB
+                #if snr >= 7:  # 10dB
                     # Loudness is higher than normal, start recording and use
                     # the last 10 frames to start
                     self._logger.debug("Started recording on device '%s'",
@@ -206,6 +217,7 @@ class Mic(object):
 
     def listen(self):
         self.wait_for_keyword(self._keyword)
+	print 'detected keyword with plugin %s switching to active detection...' % self.passive_stt_engine._plugin_info
         return self.active_listen()
 
     def active_listen(self, timeout=3):
@@ -240,16 +252,22 @@ class Mic(object):
 
     # Output methods
     def play_file(self, filename):
-        self._output_device.play_file(filename,
+        if self._output_device == False:
+            self._logger.warn("audio disabled, not playing audio")
+        else:
+            self._output_device.play_file(filename,
                                       chunksize=self._output_chunksize,
                                       add_padding=self._output_padding)
 
     def say(self, phrase):
-        altered_phrase = alteration.clean(phrase)
-        with tempfile.SpooledTemporaryFile() as f:
-            f.write(self.tts_engine.say(altered_phrase))
-            f.seek(0)
-            self._output_device.play_fp(f)
+        if self._output_device == False:
+            self._logger.warn("audio disabled, saying: %s" % phrase)
+        else:
+            altered_phrase = alteration.clean(phrase)
+            with tempfile.SpooledTemporaryFile() as f:
+                f.write(self.tts_engine.say(altered_phrase))
+                f.seek(0)
+                self._output_device.play_fp(f)
 
 
 if __name__ == "__main__":

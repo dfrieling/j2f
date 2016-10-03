@@ -286,6 +286,3 @@ class WeatherPlugin(plugin.SpeechHandlerPlugin):
         return (self.gettext('WEATHER').upper() in text or
                 self.gettext('TEMPERATURE').upper() in text or
                 self.gettext('FORECAST').upper() in text)
-
-    def get_priority(self):
-        return 1
