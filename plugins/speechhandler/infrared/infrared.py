@@ -19,11 +19,18 @@ class InfraredControlPlugin(plugin.SpeechHandlerPlugin):
             language = 'en-US'
 
     def get_phrases(self):
-        return [self.gettext('ON'), self.gettext('OFF'), self.gettext('PLAY'), self.gettext('STOP'), self.gettext('PAUSE')]
+        return self.get_phrases1() + self.get_phrases2()
+
+    def get_phrases1(self):
+        return [self.gettext('MUSIC')]
+
+    def get_phrases2(self):
+        return [self.gettext('ON'), self.gettext('OFF'), self.gettext('POWER'), self.gettext('PAUSE'), self.gettext('PLAY'), self.gettext('STOP')]
 
     def handle(self, text, mic):
         self._logger.info('handling command(s): %s' % text)
-        
+	text = text.upper()
+
         if self.gettext('POWER') in text or self.gettext('ON') in text or self.gettext('OFF') in text:
             self.sendcommand(self.COMMAND_POWER)
 
@@ -47,4 +54,4 @@ class InfraredControlPlugin(plugin.SpeechHandlerPlugin):
         Arguments:
         text -- user-input, typically transcribed speech
         """
-        return any(p in text.upper() for p in self.get_phrases())
+        return any(p.lower() == t.lower() for t in text.lower().split(' ') for p in self.get_phrases1()) and any(p.lower() == t.lower() for t in text.lower().split(' ') for p in self.get_phrases2())
