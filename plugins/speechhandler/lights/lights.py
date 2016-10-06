@@ -5,8 +5,12 @@ import time
 import logging
 
 class LightsPlugin(plugin.SpeechHandlerPlugin):
-    COMMAND_LIGHTS_ON = 'pilight-send -p "rsl366" --systemcode=2 --programcode=2 --on'
-    COMMAND_LIGHTS_OFF = 'pilight-send -p "rsl366" --systemcode=2 --programcode=2 --off'
+    #switch A
+    COMMAND_LIGHTS_ON='pilight-send -p raw -c "294 882 294 882 294 882 882 294 294 882 294 882 294 882 882 294 294 882 294 882 294 882 294 882 294 882 882 294 294 882 882 294 294 882 882 294 294 882 882 294 294 882 294 882 294 882 882 294 294 9996"'
+    COMMAND_LIGHTS_OFF='pilight-send -p raw -c "294 882 294 882 294 882 882 294 294 882 294 882 294 882 882 294 294 882 294 882 294 882 294 882 294 882 882 294 294 882 882 294 294 882 882 294 294 882 882 294 294 1176 882 294 294 882 294 882 294 9996"'
+    #daniels switch
+    #COMMAND_LIGHTS_ON = 'pilight-send -p "rsl366" --systemcode=2 --programcode=2 --on'
+    #COMMAND_LIGHTS_OFF = 'pilight-send -p "rsl366" --systemcode=2 --programcode=2 --off'
 
     def __init__(self, *args, **kwargs):
         super(LightsPlugin, self).__init__(*args, **kwargs)
